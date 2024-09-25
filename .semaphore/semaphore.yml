@@ -2,7 +2,7 @@ version: v1.0
 name: Semaphore JavaScript Example Pipeline
 agent:
   machine:
-    type: s1-4x-small
+    type: s1-bp-ubuntu-latest-x64-2x
     os_image: ''
   containers:
     - name: main
