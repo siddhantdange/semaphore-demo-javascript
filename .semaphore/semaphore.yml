@@ -2,8 +2,8 @@ version: v1.0
 name: Semaphore JavaScript Example Pipeline
 agent:
   machine:
-    type: e1-standard-2
-    os_image: ubuntu2004
+    type: s1-4x-small
+    os_image: ''
   containers:
     - name: main
       image: 'docker.io/node:16.16.0'
