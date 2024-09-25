@@ -23,6 +23,7 @@ blocks:
           commands:
             - cd src/client
             - 'cache restore client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),client-node-modules-$SEMAPHORE_GIT_BRANCH,client-node-modules-master'
+            - nvm install v16.16.0
             - npm install
             - cache store client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules
         - name: server npm install and cache
