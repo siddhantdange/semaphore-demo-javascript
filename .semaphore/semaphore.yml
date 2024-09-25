@@ -34,10 +34,6 @@ blocks:
             - 'cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master'
             - npm install --legacy-peer-deps
             - cache store server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules
-      agent:
-        machine:
-          type: s1-4x-small
-          os_image: ''
   - name: "\U0001F50D Lint"
     task:
       env_vars:
@@ -62,10 +58,6 @@ blocks:
             - cd src/server
             - 'cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master'
             - npm run lint
-      agent:
-        machine:
-          type: s1-4x-small
-          os_image: ''
   - name: "\U0001F9EA Unit Tests"
     task:
       env_vars:
@@ -96,10 +88,6 @@ blocks:
         always:
           commands:
             - "[[ -f junit.xml ]] && test-results publish --name \"\U0001F9EA $NAME\" junit.xml"
-      agent:
-        machine:
-          type: s1-4x-small
-          os_image: ''
   - name: "\U0001F504 E2E Tests"
     task:
       env_vars:
@@ -135,10 +123,6 @@ blocks:
         always:
           commands:
             - "[[ -f junit.xml ]] && test-results publish --name \"\U0001F3D7️ $NAME\" junit.xml"
-      agent:
-        machine:
-          type: s1-4x-small
-          os_image: ''
 after_pipeline:
   task:
     jobs:
