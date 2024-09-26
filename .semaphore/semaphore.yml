@@ -11,8 +11,8 @@ agent:
       image: 'registry.semaphoreci.com/postgres:9.6'
       user: postgres
       env_vars:
-        - name: POSTGRES_PASSWORD
-          value: ''
+      	- name: POSTGRES_HOST_AUTH_METHOD
+          value: trust
 blocks:
   - name: "\U0001F4E6 Install dependencies"
     task:
