@@ -23,7 +23,11 @@ blocks:
       jobs:
         - name: client npm install and cache
           commands:
-            - 'sleep 1200 - cd src/client - ''cache restore client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),client-node-modules-$SEMAPHORE_GIT_BRANCH,client-node-modules-master'' - npm install - cache store client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules'
+            - sleep 1200
+            - cd src/client
+            - 'cache restore client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),client-node-modules-$SEMAPHORE_GIT_BRANCH,client-node-modules-master'''
+            - npm install
+            - cache store client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules
         - name: server npm install and cache
           commands:
             - cd src/server
