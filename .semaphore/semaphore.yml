@@ -16,10 +16,10 @@ agent:
 blocks:
   - name: "\U0001F4E6 Install dependencies"
     task:
-      jobs: []
       agent:
         machine:
           type: s1-bp-ubuntu-latest-x64-2x
+          os_image: ''
         containers:
           - name: db
             image: 'registry.semaphoreci.com/postgres:9.6'
