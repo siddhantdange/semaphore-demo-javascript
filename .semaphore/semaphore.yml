@@ -7,9 +7,26 @@ agent:
   containers:
     - name: main
       image: 'docker.io/node:16.16.0'
+    - name: db
+      image: 'registry.semaphoreci.com/postgres:9.6'
+      user: postgres
+      env_vars:
+        - name: POSTGRES_PASSOWRD
+          value: keyboard-cat
 blocks:
   - name: "\U0001F4E6 Install dependencies"
     task:
+      jobs: []
+    agent:
+      machine:
+        type: s1-bp-ubuntu-latest-x64-2x
+      containers:
+        - name: db
+          image: 'registry.semaphoreci.com/postgres:9.6'
+          user: postgres
+          env_vars:
+            - name: POSTGRES_PASSOWRD
+              value: ''
       env_vars:
         - name: NODE_ENV
           value: test
@@ -23,11 +40,7 @@ blocks:
       jobs:
         - name: client npm install and cache
           commands:
-            - sleep 1200
-            - cd src/client
-            - 'cache restore client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),client-node-modules-$SEMAPHORE_GIT_BRANCH,client-node-modules-master'''
-            - npm install
-            - cache store client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules
+            - 'apt-get update && apt-get install -y postgresql-client - sleep 1200 - cd src/client - ''cache restore client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),client-node-modules-$SEMAPHORE_GIT_BRANCH,client-node-modules-master'''''' - npm install - cache store client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules'
         - name: server npm install and cache
           commands:
             - cd src/server
