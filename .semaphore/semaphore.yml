@@ -10,9 +10,8 @@ agent:
 global_job_config:
   prologue:
     commands:
-      - whoami
-      - sudo apt-get update
-      - sudo apt-get install -y postgresql-client
+      - echo 'content' > s.txt
+      - artifact push workflow s.txt
 blocks:
   - name: "\U0001F4E6 Install dependencies"
     task:
@@ -42,6 +41,8 @@ blocks:
       jobs:
         - name: client npm install and cache
           commands:
+            - artifact pull workflow s.txt
+            - cat s.txt
             - apt-get update && apt-get install -y postgresql-client
             - sleep 1200
             - cd src/client
