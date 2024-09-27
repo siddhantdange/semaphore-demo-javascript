@@ -6,7 +6,7 @@ agent:
     os_image: ''
   containers:
     - name: main
-      image: 'registry.semaphoreci.com/node:18'
+      image: 'registry.semaphoreci.com/node:18-browsers'
 global_job_config:
   prologue:
     commands:
@@ -20,7 +20,7 @@ blocks:
           os_image: ''
         containers:
           - name: main
-            image: 'registry.semaphoreci.com/node:18'
+            image: 'registry.semaphoreci.com/node:18-browsers'
           - name: db
             image: 'registry.semaphoreci.com/postgres:12'
             user: postgres
