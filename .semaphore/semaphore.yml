@@ -6,7 +6,7 @@ agent:
     os_image: ''
   containers:
     - name: main
-      image: 'docker.io/node:16.16.0'
+      image: 'registry.semaphoreci.com/node:18'
 global_job_config:
   prologue:
     commands:
@@ -20,9 +20,9 @@ blocks:
           os_image: ''
         containers:
           - name: main
-            image: 'docker.io/node:16.16.0'
+            image: 'registry.semaphoreci.com/node:18'
           - name: db
-            image: 'registry.semaphoreci.com/postgres:9.6'
+            image: 'registry.semaphoreci.com/postgres:12'
             user: postgres
             env_vars:
               - name: POSTGRES_HOST_AUTH_METHOD
