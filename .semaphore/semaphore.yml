@@ -6,7 +6,7 @@ agent:
     os_image: ''
   containers:
     - name: main
-      image: 'registry.semaphoreci.com/node:18-browsers'
+      image: 'registry.semaphoreci.com/node:18'
 global_job_config:
   prologue:
     commands:
