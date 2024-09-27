@@ -6,12 +6,12 @@ agent:
     os_image: ''
   containers:
     - name: main
-      image: 'registry.semaphoreci.com/node:18'
+      image: 'registry.semaphoreci.com/node:18-browsers'
 global_job_config:
   prologue:
     commands:
       - whoami
-      - sudo apt-get update && apt-get install -y postgresql-client
+      - apt-get update && apt-get install -y postgresql-client
 blocks:
   - name: "\U0001F4E6 Install dependencies"
     task:
