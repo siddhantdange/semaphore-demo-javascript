@@ -15,6 +15,8 @@ blocks:
           type: s1-bp-ubuntu-latest-x64-2x
           os_image: ''
         containers:
+          - name: main
+            image: 'docker.io/node:16.16.0'
           - name: db
             image: 'registry.semaphoreci.com/postgres:9.6'
             user: postgres
