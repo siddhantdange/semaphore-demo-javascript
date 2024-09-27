@@ -11,7 +11,8 @@ global_job_config:
   prologue:
     commands:
       - whoami
-      - sudo apt-get update && sudo apt-get install -y postgresql-client
+      - sudo apt-get update
+      - sudo apt-get install -y postgresql-client
 blocks:
   - name: "\U0001F4E6 Install dependencies"
     task:
