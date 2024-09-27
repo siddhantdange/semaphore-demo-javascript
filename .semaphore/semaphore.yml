@@ -43,18 +43,14 @@ blocks:
           commands:
             - artifact pull workflow s.txt
             - cat s.txt
-            - apt-get update && apt-get install -y postgresql-client
-            - sleep 1200
+            - sleep exit 0
             - cd src/client
             - 'cache restore client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),client-node-modules-$SEMAPHORE_GIT_BRANCH,client-node-modules-master'
             - npm install
             - cache store client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules
         - name: server npm install and cache
           commands:
-            - cd src/server
-            - 'cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master'
-            - npm install --legacy-peer-deps
-            - cache store server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules
+            - 'exit 0 - cd src/server - ''cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master'' - npm install --legacy-peer-deps - cache store server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules'
   - name: "\U0001F50D Lint"
     task:
       env_vars:
