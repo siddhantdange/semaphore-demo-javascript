@@ -12,7 +12,7 @@ global_job_config:
     commands:
       - mkdir test_dir
       - touch test_dir/test
-      - cache store test17 .
+      - cache store test19 .
 blocks:
   - name: "\U0001F4E6 Install dependencies"
     task:
